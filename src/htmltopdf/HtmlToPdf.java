@@ -12,5 +12,8 @@ package htmltopdf;
  * @author Ivo
  */
 public class HtmlToPdf {
+
+    public HtmlToPdf() {
+    }
     
 }
