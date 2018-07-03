@@ -8,21 +8,25 @@ package main;
 import htmltopdf.HtmlParser;
 import java.io.IOException;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
 /**
  *
- * @author 0186779
+ * @author Ivo
  */
 public class ParserTest {
     public static void main(String[] args) throws IOException {
         Document html = HtmlParser.parseFile("inp/test.html");
         
         
-        Elements allElements = html.getElementsByTag("html");
+        Elements allElements = html.body().children();
         //if(allElements.size();
         allElements.forEach(e -> {
-                System.out.println("-->> "+ e.nodeName() +"   "+e.className());
+            System.out.println(e.tagName()+"  "+e.isBlock());
+            e.childNodes().forEach(n -> {
+                    System.out.println("   -->> "+ n.toString().trim()+" "+n.getClass());
+            });
         });
         //System.out.println(html.getAllElements());
     }
