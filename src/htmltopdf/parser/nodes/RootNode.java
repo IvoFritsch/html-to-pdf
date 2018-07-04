@@ -8,6 +8,7 @@ package htmltopdf.parser.nodes;
 import htmltopdf.parser.nodes.style.NodeStyle;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
+import org.w3c.dom.Document;
 
 /**
  * Represents the root node (aka the "body" node in the HTML).
@@ -43,6 +44,17 @@ public class RootNode extends SupportedNode{
     @Override
     public int getAfinityTo(Node n, SupportedNode parent) {
         return (n instanceof Element && ((Element)n).tagName().equals("body")) ? 1 : 0;
+    }
+
+    @Override
+    public void addNodeToXslFoDOM(Document doc, org.w3c.dom.Element parent) {
+        children.forEach(c -> {
+            try{
+            c.addNodeToXslFoDOM(doc, parent);
+            } catch (Exception e){
+                
+            }
+        });
     }
     
     

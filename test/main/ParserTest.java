@@ -5,7 +5,7 @@
  */
 package main;
 
-import htmltopdf.HtmlParser;
+import htmltopdf.parser.HtmlParser;
 import htmltopdf.parser.nodes.RootNode;
 import java.io.IOException;
 

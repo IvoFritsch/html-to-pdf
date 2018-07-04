@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.jsoup.nodes.Node;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  * Superclass of all nodes supported by the converter.
@@ -54,6 +56,14 @@ public abstract class SupportedNode {
         children.add(n);
     }
     
+    /**
+     * Construct and return an new SupportedNode, representing the jsoup HTML node.
+     * 
+     * @param n The jsoup HTML node to be considered.
+     * @param style The style of the node.
+     * @param parent The father SupportedNode of this node.
+     * @return The newly constructed node, null if the HTML node can't be matched to an SupportedNode.
+     */
     public static SupportedNode constructNode(Node n, NodeStyle style, SupportedNode parent){
         int highestAfinity = 0;
         Class nodeToConstruct = null;
@@ -83,8 +93,17 @@ public abstract class SupportedNode {
     }
     
     /**
+     * Receiving an DOM Element, the node implementation 
+     * should add its equivalent XSL-FO structure as a child of the element.
+     * 
+     * @param doc The DOM document
+     * @param parent The DOM element to receive the child node
+     */
+    public abstract void addNodeToXslFoDOM(Document doc, Element parent);
+    
+    /**
      * Receiving an jsoup HTML node, the node implementation should return its afinity level to the node.<br>
-     *   For example, receiving an "div" node with the class "row", the DivNode will return the number 1, 
+     *   For example, receiving an "div" node with the class "row", the SimpleDivNode will return the number 1, 
      *   while the DivRowNode will return the number 2, meaning it has more afinity to be constructed with this node.<br>
      *   The parser will use this number to decide wich supported node it has to construct.
      * 

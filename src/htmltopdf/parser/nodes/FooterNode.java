@@ -8,6 +8,7 @@ package htmltopdf.parser.nodes;
 import htmltopdf.parser.nodes.style.NodeStyle;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
+import org.w3c.dom.Document;
 
 /**
  * Represents the footer node in the HTML.
@@ -28,6 +29,11 @@ public class FooterNode extends SimpleBlockNode{
     protected int getAfinityTo(Node n, SupportedNode parent) {
         int afinityReturn = super.getAfinityTo(n, parent);
         return (afinityReturn > 0 && ((Element)n).tagName().equals("footer")) ? 1 : 0;
+    }
+
+    @Override
+    public void addNodeToXslFoDOM(Document doc, org.w3c.dom.Element parent) {
+        
     }
     
 }

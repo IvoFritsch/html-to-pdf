@@ -7,6 +7,9 @@ package htmltopdf.parser.nodes;
 
 import htmltopdf.parser.nodes.style.NodeStyle;
 import org.jsoup.nodes.Node;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 
 /**
  * Represents an simple text node to be rendered to the PDF.
@@ -40,5 +43,11 @@ public class TextNode extends SupportedNode{
         sb.append(text);
         sb.append("\n");
         return sb.toString();
+    }
+
+    @Override
+    public void addNodeToXslFoDOM(Document doc, Element parent) {
+        Text newTextNode = doc.createTextNode(text);
+        parent.appendChild(newTextNode);
     }
 }

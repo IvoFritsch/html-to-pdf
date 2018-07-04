@@ -5,9 +5,11 @@
  */
 package htmltopdf.parser.nodes;
 
+import htmltopdf.converter.Converter;
 import htmltopdf.parser.nodes.style.NodeStyle;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
+import org.w3c.dom.Document;
 
 /**
  * Represents an paragraph (&lt;p&gt;) in the HTML.
@@ -24,10 +26,26 @@ public class ParagraphNode extends SimpleBlockNode{
         super(n,style);
     }
     
+    
     @Override
     protected int getAfinityTo(Node n, SupportedNode parent) {
         int afinityReturn = super.getAfinityTo(n, parent);
         return (afinityReturn > 0 && ((Element)n).tagName().equals("p")) ? 1 : 0;
     }
+
+
+    @Override
+    public void addNodeToXslFoDOM(Document doc, org.w3c.dom.Element parent) {
+        org.w3c.dom.Element newBlock = doc.createElementNS(Converter.foNS, "fo:block");
+        parent.appendChild(newBlock);
+        children.forEach(c -> {
+            try{
+                c.addNodeToXslFoDOM(doc, newBlock);
+            } catch (Exception e){
+                System.err.println("not added");
+            }
+        });
+    }
+
     
 }
