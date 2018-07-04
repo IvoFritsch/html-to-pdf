@@ -38,20 +38,19 @@
 		<fo:block linefeed-treatment="preserve">&#xA;</fo:block>
 		<fo:block linefeed-treatment="preserve">&#xA;</fo:block>
 		<fo:table>
-		<fo:table-column column-width="9.5cm"/>
-		<fo:table-column column-width="9.5cm"/>
+			<fo:table-column column-width="9.5cm"/>
+			<fo:table-column column-width="9.5cm"/>
 
-
-		<fo:table-body>
-		  <fo:table-row>
-			<fo:table-cell>
-			  <fo:block font-weight="bold" background-color="blue" text-align="center">Volvo:</fo:block>
-			</fo:table-cell>
-			<fo:table-cell>
-			  <fo:block background-color="orange">$50000</fo:block>
-			</fo:table-cell>
-		  </fo:table-row>
-		</fo:table-body>
+			<fo:table-body>
+			  <fo:table-row>
+				<fo:table-cell>
+				  <fo:block font-weight="bold" background-color="blue" text-align="center">Volvo:</fo:block>
+				</fo:table-cell>
+				<fo:table-cell>
+				  <fo:block background-color="orange">$50000</fo:block>
+				</fo:table-cell>
+			  </fo:table-row>
+			</fo:table-body>
 
 		</fo:table>
     </fo:flow>

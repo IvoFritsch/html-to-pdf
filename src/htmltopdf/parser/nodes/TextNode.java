@@ -27,7 +27,7 @@ public class TextNode extends SupportedNode{
     }
     
     @Override
-    public int getAfinityTo(Node n) {
+    public int getAfinityTo(Node n, SupportedNode parent) {
         return ((n instanceof org.jsoup.nodes.TextNode) && n.toString().trim().length() > 0) ? 1 : 0;
     }
     

@@ -25,7 +25,7 @@ public class BreaklineNode extends SupportedNode{
     }
     
     @Override
-    public int getAfinityTo(Node n) {
+    public int getAfinityTo(Node n, SupportedNode parent) {
         return (n instanceof Element && ((Element)n).tagName().equals("br")) ? 1 : 0;
     }
 }

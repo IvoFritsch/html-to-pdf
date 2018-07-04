@@ -6,9 +6,13 @@
 package htmltopdf.parser.nodes;
 
 import htmltopdf.parser.nodes.style.NodeStyle;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jsoup.nodes.Node;
 
 /**
@@ -49,8 +53,29 @@ public abstract class SupportedNode {
         
     }
     
-    public static SupportedNode constructNode(Node n){
-        
+    public static SupportedNode constructNode(Node n, NodeStyle style, SupportedNode parent){
+        int highestAfinity = 0;
+        Class nodeToConstruct = null;
+        for (SupportedNode sn : supportedNodes){
+            int nodeAfinity = sn.getAfinityTo(n, parent);
+            if(nodeAfinity > highestAfinity){
+                highestAfinity = nodeAfinity;
+                nodeToConstruct = sn.getClass();
+            }
+        }
+        if(nodeToConstruct != null){
+            Constructor<SupportedNode> constructor = null;
+            try {
+                nodeToConstruct.getConstructor(Node.class, NodeStyle.class);
+            } catch (Exception ex) {
+                return null;
+            }
+            try {
+                return constructor.newInstance(n,style);
+            } catch (Exception ex) {
+                return null;
+            }
+        }
         return null;
     }
     
@@ -61,9 +86,10 @@ public abstract class SupportedNode {
      *   The parser will use this number to decide wich supported node it has to construct.
      * 
      * @param n The HTML node to test.
+     * @param parent Parent node of this node.
      * @return the afinity of this supported node with the HTML node
      */
-    protected abstract int getAfinityTo(Node n);
+    protected abstract int getAfinityTo(Node n, SupportedNode parent);
     
     
 }

@@ -23,13 +23,13 @@ public class RootNode extends SupportedNode{
         super(null);
     }
     
-    public RootNode(NodeStyle style) {
+    public RootNode(Node n, NodeStyle style) {
         super(style);
     }
     
     
     @Override
-    public int getAfinityTo(Node n) {
+    public int getAfinityTo(Node n, SupportedNode parent) {
         return (n instanceof Element && ((Element)n).tagName().equals("body")) ? 1 : 0;
     }
     
