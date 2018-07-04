@@ -25,7 +25,7 @@ public class BreaklineNode extends SupportedNode{
     }
     
     @Override
-    public boolean canConstructFrom(Node n) {
-        return n instanceof Element && ((Element)n).tagName().equals("br");
+    public int getAfinityTo(Node n) {
+        return (n instanceof Element && ((Element)n).tagName().equals("br")) ? 1 : 0;
     }
 }

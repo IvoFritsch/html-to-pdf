@@ -6,6 +6,7 @@
 package htmltopdf.parser.nodes;
 
 import htmltopdf.parser.nodes.style.NodeStyle;
+import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 
 /**
@@ -28,8 +29,8 @@ public class RootNode extends SupportedNode{
     
     
     @Override
-    public boolean canConstructFrom(Node n) {
-        return (n instanceof org.jsoup.nodes.TextNode) && n.toString().trim().length() > 0;
+    public int getAfinityTo(Node n) {
+        return (n instanceof Element && ((Element)n).tagName().equals("body")) ? 1 : 0;
     }
     
     

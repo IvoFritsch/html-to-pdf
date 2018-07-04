@@ -27,8 +27,8 @@ public class TextNode extends SupportedNode{
     }
     
     @Override
-    public boolean canConstructFrom(Node n) {
-        return (n instanceof org.jsoup.nodes.TextNode) && n.toString().trim().length() > 0;
+    public int getAfinityTo(Node n) {
+        return ((n instanceof org.jsoup.nodes.TextNode) && n.toString().trim().length() > 0) ? 1 : 0;
     }
     
     

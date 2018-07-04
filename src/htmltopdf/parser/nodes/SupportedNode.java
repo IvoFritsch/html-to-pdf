@@ -55,13 +55,15 @@ public abstract class SupportedNode {
     }
     
     /**
-     * Receiving an jsoup HTML node, the node implementation should return if it 
-     *   can be constructed from this element.
+     * Receiving an jsoup HTML node, the node implementation should return its afinity level to the node.<br>
+     *   For example, receiving an "div" node with the class "row", the DivNode will return the number 1, 
+     *   while the DivRowNode will return the number 2, meaning it has more afinity to be constructed with this node.<br>
+     *   The parser will use this number to decide wich supported node it has to construct.
      * 
      * @param n The HTML node to test.
-     * @return true if the node can be constructed, false otherwise.
+     * @return the afinity of this supported node with the HTML node
      */
-    protected abstract boolean canConstructFrom(Node n);
+    protected abstract int getAfinityTo(Node n);
     
     
 }
