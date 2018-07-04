@@ -7,12 +7,9 @@ package htmltopdf.parser.nodes;
 
 import htmltopdf.parser.nodes.style.NodeStyle;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jsoup.nodes.Node;
 
 /**
@@ -30,7 +27,11 @@ public abstract class SupportedNode {
         supportedNodes = Arrays.asList(
                 new BreaklineNode(),
                 new RootNode(),
-                new TextNode()
+                new TextNode(),
+                new SimpleDivNode(),
+                new ParagraphNode(),
+                new HeaderNode(),
+                new FooterNode()
         );
     }
 
@@ -50,7 +51,7 @@ public abstract class SupportedNode {
      * @param n Node to add as child of this node.
      */
     public void addChildNode(SupportedNode n){
-        
+        children.add(n);
     }
     
     public static SupportedNode constructNode(Node n, NodeStyle style, SupportedNode parent){
@@ -66,13 +67,15 @@ public abstract class SupportedNode {
         if(nodeToConstruct != null){
             Constructor<SupportedNode> constructor = null;
             try {
-                nodeToConstruct.getConstructor(Node.class, NodeStyle.class);
+                constructor = nodeToConstruct.getConstructor(Node.class, NodeStyle.class);
             } catch (Exception ex) {
+                ex.printStackTrace();
                 return null;
             }
             try {
                 return constructor.newInstance(n,style);
             } catch (Exception ex) {
+                ex.printStackTrace();
                 return null;
             }
         }
@@ -90,6 +93,20 @@ public abstract class SupportedNode {
      * @return the afinity of this supported node with the HTML node
      */
     protected abstract int getAfinityTo(Node n, SupportedNode parent);
+
+    public String toStringFormatted(int tabulation) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = tabulation; i > 0; i--) {
+            sb.append("   ");
+        }
+        sb.append(this.getClass().getName());
+        sb.append("\n");
+        children.forEach(child -> sb.append(child.toStringFormatted(tabulation+1)));
+        return sb.toString();
+    }
     
-    
+    @Override
+    public String toString() {
+        return toStringFormatted(0);
+    }
 }

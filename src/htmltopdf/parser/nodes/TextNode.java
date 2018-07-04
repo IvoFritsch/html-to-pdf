@@ -30,6 +30,15 @@ public class TextNode extends SupportedNode{
     public int getAfinityTo(Node n, SupportedNode parent) {
         return ((n instanceof org.jsoup.nodes.TextNode) && n.toString().trim().length() > 0) ? 1 : 0;
     }
-    
-    
+
+    @Override
+    public String toStringFormatted(int tabulation) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = tabulation; i > 0; i--) {
+            sb.append("   ");
+        }
+        sb.append(text);
+        sb.append("\n");
+        return sb.toString();
+    }
 }

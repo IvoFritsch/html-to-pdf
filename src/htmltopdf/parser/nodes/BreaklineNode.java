@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 
 /**
- * Represents an breakline (&lt;br/&gt;) in the HTML
+ * Represents an breakline (&lt;br/&gt;) in the HTML.
  * 
  * @author Ivo
  */

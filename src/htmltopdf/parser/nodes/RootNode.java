@@ -26,7 +26,19 @@ public class RootNode extends SupportedNode{
     public RootNode(Node n, NodeStyle style) {
         super(style);
     }
-    
+
+    @Override
+    public void addChildNode(SupportedNode n) {
+        if(n instanceof HeaderNode){
+            headerNode = n;
+            return;
+        }
+        if(n instanceof FooterNode){
+            footerNode = n;
+            return;
+        }
+        super.addChildNode(n); //To change body of generated methods, choose Tools | Templates.
+    }
     
     @Override
     public int getAfinityTo(Node n, SupportedNode parent) {

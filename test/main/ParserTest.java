@@ -6,10 +6,8 @@
 package main;
 
 import htmltopdf.HtmlParser;
+import htmltopdf.parser.nodes.RootNode;
 import java.io.IOException;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.TextNode;
-import org.jsoup.select.Elements;
 
 /**
  *
@@ -17,17 +15,7 @@ import org.jsoup.select.Elements;
  */
 public class ParserTest {
     public static void main(String[] args) throws IOException {
-        Document html = HtmlParser.parseFile("inp/test.html");
-        
-        
-        Elements allElements = html.body().children();
-        //if(allElements.size();
-        allElements.forEach(e -> {
-            System.out.println(e.tagName()+"  "+e.isBlock());
-            e.childNodes().forEach(n -> {
-                    System.out.println("   -->> "+ n.toString().trim()+" "+n.getClass());
-            });
-        });
-        //System.out.println(html.getAllElements());
+        RootNode parsed = HtmlParser.parseHtmlToSupportedStructure("inp/test.html");
+        System.out.println(parsed.toString());
     }
 }
