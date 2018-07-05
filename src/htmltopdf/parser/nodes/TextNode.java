@@ -26,7 +26,7 @@ public class TextNode extends SupportedNode{
     
     public TextNode(Node n, NodeStyle style) {
         super(style);
-        this.text = n.toString().trim();
+        this.text = n.toString();
     }
     
     @Override

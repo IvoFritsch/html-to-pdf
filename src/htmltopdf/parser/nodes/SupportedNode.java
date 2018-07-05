@@ -32,6 +32,7 @@ public abstract class SupportedNode {
                 new TextNode(),
                 new SimpleDivNode(),
                 new ParagraphNode(),
+                new SpanNode(),
                 new HeaderNode(),
                 new FooterNode()
         );
