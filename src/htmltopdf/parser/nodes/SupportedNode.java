@@ -28,6 +28,7 @@ public abstract class SupportedNode {
     static{
         supportedNodes = Arrays.asList(
                 new BreaklineNode(),
+                new HorizontalLineNode(),
                 new RootNode(),
                 new TextNode(),
                 new SimpleDivNode(),

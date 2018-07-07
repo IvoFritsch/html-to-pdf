@@ -17,28 +17,32 @@ import org.w3c.dom.Text;
  * 
  * @author Ivo
  */
-public class BreaklineNode extends SupportedNode{
+public class HorizontalLineNode extends SupportedNode{
 
-    BreaklineNode() {
+    HorizontalLineNode() {
         super(null);
     }
     
-    public BreaklineNode(Node n, NodeStyle style) {
+    public HorizontalLineNode(Node n, NodeStyle style) {
         super(style);
     }
     
     @Override
     public int getAfinityTo(Node n, SupportedNode parent) {
-        return (n instanceof Element && ((Element)n).tagName().equals("br")) ? 1 : 0;
+        return (n instanceof Element && ((Element)n).tagName().equals("hr")) ? 1 : 0;
     }
 
     @Override
     public void addNodeToXslFoDOM(Document doc, org.w3c.dom.Element parent) {
         org.w3c.dom.Element newBlock = doc.createElementNS(Converter.foNS, "fo:block");
+        org.w3c.dom.Element line = doc.createElementNS(Converter.foNS, "fo:leader");
+        line.setAttribute("leader-pattern", "rule");
+        line.setAttribute("leader-length", "100%");
+        line.setAttribute("rule-style", "solid");
+        line.setAttribute("rule-thickness", "2pt");
         style.addStyleAttrToNode(newBlock);
-        newBlock.setAttribute("linefeed-treatment", "preserve");
-        Text breakText = doc.createTextNode("\n");
-        newBlock.appendChild(breakText);
+        newBlock.appendChild(line);
+        
         parent.appendChild(newBlock);
     }
 }

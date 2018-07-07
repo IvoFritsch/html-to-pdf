@@ -30,7 +30,7 @@ public class HtmlParser {
     public static RootNode parseHtmlToSupportedStructure(String name) throws IOException{
         Document html = HtmlParser.parseFile("inp/test.html");
         Element body = html.body();
-        RootNode rootNode = new RootNode(body,new NodeStyle());
+        RootNode rootNode = new RootNode(body,new NodeStyle(null));
         convertHtmlNodeToSupportedNode(rootNode, body);
         return rootNode;
     }
@@ -38,7 +38,7 @@ public class HtmlParser {
     private static void convertHtmlNodeToSupportedNode(SupportedNode nodeToReceive, Node noteToExtract){
         if(noteToExtract.childNodeSize​() < 1) return;
         noteToExtract.childNodes().forEach(cn -> {
-            SupportedNode nodeToAdd = SupportedNode.constructNode(cn, null, nodeToReceive);
+            SupportedNode nodeToAdd = SupportedNode.constructNode(cn, new NodeStyle(cn.attr("style")), nodeToReceive);
             if(nodeToAdd == null) return;
             nodeToReceive.addChildNode(nodeToAdd);
             convertHtmlNodeToSupportedNode(nodeToAdd, cn);

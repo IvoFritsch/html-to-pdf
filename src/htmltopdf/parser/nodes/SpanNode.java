@@ -36,12 +36,14 @@ public class SpanNode extends SupportedNode{
     @Override
     public void addNodeToXslFoDOM(Document doc, org.w3c.dom.Element parent) {
         org.w3c.dom.Element newBlock = doc.createElementNS(Converter.foNS, "fo:inline");
-        newBlock.setAttribute("background-color", "red");
+        
+        style.addStyleAttrToNode(newBlock);
+        
         parent.appendChild(newBlock);
         children.forEach(c -> {
             try{
                 c.addNodeToXslFoDOM(doc, newBlock);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.err.println("not added");
             }
         });
