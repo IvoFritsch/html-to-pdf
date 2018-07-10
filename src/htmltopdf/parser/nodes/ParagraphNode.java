@@ -37,13 +37,15 @@ public class ParagraphNode extends SimpleBlockNode{
     @Override
     public void addNodeToXslFoDOM(Document doc, org.w3c.dom.Element parent) {
         org.w3c.dom.Element newBlock = doc.createElementNS(Converter.foNS, "fo:block");
-        newBlock.setAttribute("margin-top", "1em");
-        newBlock.setAttribute("margin-bottom", "1em");
-        style.addStyleAttrToNode(newBlock);
+        org.w3c.dom.Element insideBlock = doc.createElementNS(Converter.foNS, "fo:block");
+        insideBlock.setAttribute("margin-top", "1em");
+        insideBlock.setAttribute("margin-bottom", "1em");
+        style.addStyleAttrToNode(insideBlock);
+        newBlock.appendChild(insideBlock);
         parent.appendChild(newBlock);
         children.forEach(c -> {
             try{
-                c.addNodeToXslFoDOM(doc, newBlock);
+                c.addNodeToXslFoDOM(doc, insideBlock);
             } catch (Exception e){
                 System.err.println("not added");
             }
