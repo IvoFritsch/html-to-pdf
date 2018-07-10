@@ -155,10 +155,10 @@ public class Converter {
         ele1.appendChild(ele2);
         ele2.setAttributeNS(null, "flow-name", "xsl-region-body");
         
-        
+        System.err.println("Entry: "+System.currentTimeMillis());
         RootNode parsed = HtmlParser.parseHtmlToSupportedStructure("inp/test.html");
         parsed.addNodeToXslFoDOM(foDoc, ele2);
-        
+        System.err.println("Exit: "+System.currentTimeMillis());
         
         DOMSource domSource = new DOMSource(foDoc);
         StringWriter writer = new StringWriter();

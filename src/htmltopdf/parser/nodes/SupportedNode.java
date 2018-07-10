@@ -23,7 +23,7 @@ public abstract class SupportedNode {
     
     protected NodeStyle style;
     protected List<SupportedNode> children;
-    private static List<SupportedNode> supportedNodes;
+    private static final List<SupportedNode> supportedNodes;
     
     static{
         supportedNodes = Arrays.asList(
@@ -115,6 +115,26 @@ public abstract class SupportedNode {
      */
     protected abstract int getAfinityTo(Node n, SupportedNode parent);
 
+    /**
+     * Receiving an SupportedNode, return if the node is the first child of this node.
+     * 
+     * @param test Node to test
+     * @return true if the node is the first child, false otherwise
+     */
+    public boolean isFirstChild (SupportedNode test){
+        return children.get(0) == test;
+    }
+    
+    /**
+     * Receiving an SupportedNode, return if the node is the last child of this node.
+     * 
+     * @param test Node to test
+     * @return true if the node is the last child, false otherwise
+     */
+    public boolean isLastChild (SupportedNode test){
+        return children.isEmpty() ? false : children.get(children.size() - 1) == test;
+    }
+    
     public String toStringFormatted(int tabulation) {
         StringBuilder sb = new StringBuilder();
         for (int i = tabulation; i > 0; i--) {
