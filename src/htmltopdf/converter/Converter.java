@@ -100,7 +100,7 @@ public class Converter {
             outDir.mkdirs();
 
             //Setup output file
-            File pdffile = new File(outDir, "ResultDOM2PDF.pdf");
+            File pdffile = new File(outDir, "out.pdf");
             System.out.println("PDF Output File: " + pdffile);
             System.out.println();
 
@@ -144,8 +144,8 @@ public class Converter {
         ele2.setAttributeNS(null, "page-width", "8.5in");
         ele2.setAttributeNS(null, "margin-top", "1in");
         ele2.setAttributeNS(null, "margin-bottom", "1in");
-        ele2.setAttributeNS(null, "margin-left", "1in");
-        ele2.setAttributeNS(null, "margin-right", "1in");
+        ele2.setAttributeNS(null, "margin-left", "0.5in");
+        ele2.setAttributeNS(null, "margin-right", "0.5in");
         ele3 = foDoc.createElementNS(foNS, "fo:region-body");
         ele2.appendChild(ele3);
         ele1 = foDoc.createElementNS(foNS, "fo:page-sequence");

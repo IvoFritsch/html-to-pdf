@@ -35,11 +35,14 @@ public class HorizontalLineNode extends SupportedNode{
     @Override
     public void addNodeToXslFoDOM(Document doc, org.w3c.dom.Element parent) {
         org.w3c.dom.Element newBlock = doc.createElementNS(Converter.foNS, "fo:block");
+        style.addStyleAttrToNode(newBlock);
+        newBlock.setAttribute("padding-top", "-0.8em");
+        newBlock.setAttribute("padding-bottom", "0.1em");
         org.w3c.dom.Element line = doc.createElementNS(Converter.foNS, "fo:leader");
         line.setAttribute("leader-pattern", "rule");
         line.setAttribute("leader-length", "100%");
         line.setAttribute("rule-style", "solid");
-        line.setAttribute("rule-thickness", "2pt");
+        line.setAttribute("rule-thickness", "0.8pt");
         style.addStyleAttrToNode(newBlock);
         newBlock.appendChild(line);
         

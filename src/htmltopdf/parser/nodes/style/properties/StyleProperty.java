@@ -20,6 +20,12 @@ public abstract class StyleProperty {
     static {
         addSupportedProp(new BackgroundColorProp());
         addSupportedProp(new FontSizeProp());
+        addSupportedProp(new TextAlignProp());
+        addSupportedProp(new FontWeightProp());
+        addSupportedProp(new MarginTopProp());
+        
+        addSupportedProp(new PaddingTopProp());
+        addSupportedProp(new PaddingBottomProp());
     }
     
     

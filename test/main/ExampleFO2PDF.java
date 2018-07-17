@@ -119,9 +119,9 @@ public class ExampleFO2PDF {
             outDir.mkdirs();
 
             //Setup input and output files
-            File fofile = new File(baseDir, "xml/fo/helloworld.fo");
+            File fofile = new File(baseDir, "inp/tests.fo");
             //File fofile = new File(baseDir, "../fo/pagination/franklin_2pageseqs.fo");
-            File pdffile = new File(outDir, "ResultFO2PDF.pdf");
+            File pdffile = new File(outDir, "out.pdf");
 
             System.out.println("Input: XSL-FO (" + fofile + ")");
             System.out.println("Output: PDF (" + pdffile + ")");

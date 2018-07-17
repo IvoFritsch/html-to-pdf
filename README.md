@@ -4,7 +4,7 @@ It works by converting an HTML to an XSL-FO, then uses Apache FOP to convert the
 
 The converter try, to maximum possible extent in the XSL-FO capabilities, create the most similar PDF to the HTML viewed in a browser.
 
-**This converter doesn't have full HTML and CSS support, it's intended to fastly convert an simple, multipage PDF reports**
+**This converter doesn't have full HTML and CSS support, it's intended to fastly convert simple, multipage PDF reports**
 
 ## The basic usage is very simple:
 

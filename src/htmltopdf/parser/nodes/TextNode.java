@@ -26,7 +26,7 @@ public class TextNode extends SupportedNode{
     
     public TextNode(Node n, NodeStyle style) {
         super(style);
-        this.text = n.toString();
+        this.text = ((org.jsoup.nodes.TextNode)n).text();
     }
     
     @Override

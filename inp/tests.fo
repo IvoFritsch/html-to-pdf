@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <fo:layout-master-set>
+    <fo:simple-page-master margin-bottom="1in" margin-left="0.5in" margin-right="0.5in" margin-top="1in" master-name="letter" page-height="11in" page-width="8.5in">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+  <fo:page-sequence master-reference="letter">
+    <fo:flow flow-name="xsl-region-body">
+      <fo:block font-size="11px">
+        <fo:block font-weight="bold" text-align="left">
+ Chamado - ID 89431 (Root entity &gt; PMNH &gt;&gt; TI) </fo:block>
+        <fo:block linefeed-treatment="preserve">
+</fo:block>
+        <fo:block padding-bottom="0.1em" padding-top="-0.8em">
+          <fo:leader leader-length="100%" leader-pattern="rule" rule-style="solid" rule-thickness="0.8pt"/>
+        </fo:block>
+        <fo:block background-color="darkgray" font-weight="bold" margin-top="-4px" padding-bottom="3px" padding-top="3px" text-align="center">
+ Preparar servidor FOG para Hospital </fo:block>
+        <fo:block background-color="gainsboro" margin-top="3px" text-align="left">
+          <fo:inline font-weight="bold">Data de abertura: </fo:inline>
+          <fo:inline>04-08-2017 14:39</fo:inline>
+        </fo:block>
+      </fo:block>
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

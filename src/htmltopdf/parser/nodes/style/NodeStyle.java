@@ -25,7 +25,9 @@ public class NodeStyle {
     Map<StyleProperty, String> props = new HashMap<>();
     
     public NodeStyle(String styleAttr) {
-        if(styleAttr == null) return;
+        if(styleAttr == null) {
+            return;
+        }
         InputSource source = new InputSource(new StringReader(styleAttr));
         CSSOMParser parser = new CSSOMParser(new SACParserCSS3());
         CSSStyleDeclaration decl;
@@ -39,7 +41,10 @@ public class NodeStyle {
         for (int i = 0; i < decl.getLength(); i++) {
             final String propName = decl.item(i);
             StyleProperty propToAdd = StyleProperty.getProperty(propName);
-            if(propToAdd==null) continue;
+            if(propToAdd==null) {
+                System.out.println("[WARNING  ] : Not supported style property \""+propName+"\"");
+                continue;
+            }
             props.put(propToAdd, decl.getPropertyValue(propName));
         }
     }
@@ -49,5 +54,21 @@ public class NodeStyle {
             elemToReceive.setAttribute(p.getXslFoAttrName(), v);
         });
     }
+    
+    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        props.forEach((p,v) -> {
+            sb.append(p.getCssPropName());
+            sb.append(":");
+            sb.append(v);
+            sb.append("; ");
+        });
+        return sb.toString();
+    }
+    
+    
     
 }

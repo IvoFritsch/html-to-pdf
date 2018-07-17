@@ -122,7 +122,7 @@ public abstract class SupportedNode {
      * @return true if the node is the first child, false otherwise
      */
     public boolean isFirstChild (SupportedNode test){
-        return children.get(0) == test;
+        return children.isEmpty() ? false : children.get(0) == test;
     }
     
     /**
