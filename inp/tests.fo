@@ -6,21 +6,75 @@
   </fo:layout-master-set>
   <fo:page-sequence master-reference="letter">
     <fo:flow flow-name="xsl-region-body">
-      <fo:block font-size="11px">
-        <fo:block font-weight="bold" text-align="left">
- Chamado - ID 89431 (Root entity &gt; PMNH &gt;&gt; TI) </fo:block>
-        <fo:block linefeed-treatment="preserve">
+      <fo:block-container font-size="9px">
+        <fo:block>
+          <fo:block-container font-weight="bold" text-align="left">
+            <fo:block> Chamado - ID 89431 (Root entity &gt; PMNH &gt; TI) </fo:block>
+          </fo:block-container>
+          <fo:block linefeed-treatment="preserve">
 </fo:block>
-        <fo:block padding-bottom="0.1em" padding-top="-0.8em">
-          <fo:leader leader-length="100%" leader-pattern="rule" rule-style="solid" rule-thickness="0.8pt"/>
+			<fo:block padding-bottom="0.1em" padding-top="-0.8em">
+			<fo:leader leader-length="100%" leader-pattern="rule" rule-style="solid" rule-thickness="0.8pt"/>
+			</fo:block>
+			<fo:block-container background-color="darkgray" font-weight="bold" margin-top="-4px" padding-bottom="3px" padding-top="3px" text-align="center">
+			<fo:block> Preparar servidor FOG para Hospital </fo:block>
+			</fo:block-container>
+			<fo:block-container background-color="gainsboro" margin-top="3px" text-align="left">
+			<fo:block>
+			  <fo:inline font-weight="bold">Data de abertura: </fo:inline>
+			  <fo:inline>04-08-2017 14:39</fo:inline>
+			</fo:block>
+			</fo:block-container>
+			  
+				<fo:table >
+				<fo:table-column column-width="50%"/>
+				<fo:table-column column-width="50%"/>
+
+				<fo:table-header>
+				  <fo:table-row>
+					<fo:table-cell padding-left="2px" padding-right="2px">
+						<fo:block-container background-color="gainsboro" margin-top="3px" text-align="left" >
+							<fo:block>
+							  <fo:inline font-weight="bold">Por: </fo:inline>
+							  <fo:inline>Ezequiel Favero Pires</fo:inline>
+							</fo:block>
+						</fo:block-container>
+					</fo:table-cell>
+					<fo:table-cell padding-left="2px" padding-right="2px">
+						<fo:block-container background-color="gainsboro" margin-top="3px" text-align="left" >
+							<fo:block>
+							  <fo:inline font-weight="bold">Última atualização: </fo:inline>
+							  <fo:inline>17-08-2017 17:00 por Nelson Schambeck</fo:inline>
+							</fo:block>
+						</fo:block-container>
+					</fo:table-cell>
+				  </fo:table-row>
+				</fo:table-header>
+
+				<fo:table-body>
+				  <fo:table-row>
+					<fo:table-cell>
+					  <fo:block>Volvo</fo:block>
+					</fo:table-cell>
+					<fo:table-cell>
+					  <fo:block>$50000</fo:block>
+					</fo:table-cell>
+				  </fo:table-row>
+				  <fo:table-row>
+					<fo:table-cell>
+					  <fo:block>SAAB</fo:block>
+					</fo:table-cell>
+					<fo:table-cell>
+					  <fo:block>$48000</fo:block>
+					</fo:table-cell>
+				  </fo:table-row>
+				</fo:table-body>
+
+				</fo:table>
+			  
+			  
         </fo:block>
-        <fo:block background-color="darkgray" font-weight="bold" margin-top="-4px" padding-bottom="3px" padding-top="3px" text-align="center">
- Preparar servidor FOG para Hospital </fo:block>
-        <fo:block background-color="gainsboro" margin-top="3px" text-align="left">
-          <fo:inline font-weight="bold">Data de abertura: </fo:inline>
-          <fo:inline>04-08-2017 14:39</fo:inline>
-        </fo:block>
-      </fo:block>
+      </fo:block-container>
     </fo:flow>
   </fo:page-sequence>
 </fo:root>

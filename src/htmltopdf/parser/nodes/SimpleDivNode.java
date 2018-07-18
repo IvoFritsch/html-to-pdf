@@ -34,9 +34,11 @@ public class SimpleDivNode extends SimpleBlockNode{
 
     @Override
     public void addNodeToXslFoDOM(Document doc, org.w3c.dom.Element parent) {
+        org.w3c.dom.Element blockContainer = doc.createElementNS(Converter.foNS, "fo:block-container");
+        style.addStyleAttrToNode(blockContainer);
         org.w3c.dom.Element newBlock = doc.createElementNS(Converter.foNS, "fo:block");
-        style.addStyleAttrToNode(newBlock);
-        parent.appendChild(newBlock);
+        blockContainer.appendChild(newBlock);
+        parent.appendChild(blockContainer);
         children.forEach(c -> {
             try{
                 c.addNodeToXslFoDOM(doc, newBlock);

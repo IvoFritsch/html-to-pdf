@@ -22,10 +22,21 @@ public abstract class StyleProperty {
         addSupportedProp(new FontSizeProp());
         addSupportedProp(new TextAlignProp());
         addSupportedProp(new FontWeightProp());
+        
         addSupportedProp(new MarginTopProp());
+        addSupportedProp(new MarginBottomProp());
+        addSupportedProp(new MarginLeftProp());
+        addSupportedProp(new MarginRightProp());
         
         addSupportedProp(new PaddingTopProp());
         addSupportedProp(new PaddingBottomProp());
+        //addSupportedProp(new PaddingLeftProp());
+        //addSupportedProp(new PaddingRightProp());
+        
+        //addSupportedProp(new FloatProp());
+        addSupportedProp(new WidthProp());
+        
+        
     }
     
     
